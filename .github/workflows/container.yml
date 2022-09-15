@@ -12,11 +12,9 @@ jobs:
       mongo:
         image: mongo
         ports:
-          - 27017:27017
+          - "27017:27017"
     steps:
       - name: Post a user
-        run:
-          'curl -X POST http://localhost:3001/api/users -H ''Content-Type: application/json''
-          -d ''{"username": "hey","address": "dude"}'''
+        run: 'curl -X POST http://localhost:3001/api/users -H ''Content-Type: application/json'' -d ''{"username": "hey","address": "dude"}'''
       - name: Get Users
         run: curl http://localhost:3001/api/users
