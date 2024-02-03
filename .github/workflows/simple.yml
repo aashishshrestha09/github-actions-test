@@ -2,10 +2,17 @@ name: Shell Commands
 
 on: [pull_request]
 
+env:
+  GROUP_NAME: "group-${{ github.event.repository.name }}"
+
 jobs:
   run-shell-command:
     runs-on: ubuntu-latest
     steps:
+      - name: echo group name
+        run: |
+          echo ${GROUP_NAME}
+          echo "https://${GROUP_NAME}:jfrog.io"
       - name: echo a string
         run: echo "Hello World"
       - name: multiline script
